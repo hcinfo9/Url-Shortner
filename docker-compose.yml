@@ -9,7 +9,7 @@ services:
       - /app/node_modules
     command: sh -c "npm install && npm run start:dev"
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - NODE_ENV=development
       - DATABASE_URL=postgresql://docker123:postgres123@db:5432/databaseurl
@@ -23,7 +23,7 @@ services:
       POSTGRES_PASSWORD: postgres123
       POSTGRES_DB: databaseurl
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - postgresql-persistence:/bitnami/postgresql
 
