@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import type { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
+import * as bcrypt from 'bcrypt';
+import { omit } from 'lodash';
 
 @Injectable()
 export class AuthService {
@@ -12,9 +14,8 @@ export class AuthService {
 
   async validateUser(email: string, pass: string): Promise<any> {
     const user = await this.prisma.user.findUnique({ where: { email } });
-    if (user && user.password === pass) {
-      const { password, ...result } = user;
-      return result;
+    if (user && (await bcrypt.compare(pass, user.password))) {
+      return omit(user, ['password']);
     }
     return null;
   }
