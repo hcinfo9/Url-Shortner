@@ -1,4 +1,4 @@
-// url.controller.ts
+// src/url/url.controller.ts
 import {
   Controller,
   Get,
@@ -27,13 +27,13 @@ export class UrlController {
     @Body() createUrlDto: CreateUrlDto,
     @Req() req: Request & { user: User },
   ) {
-    return this.urlService.create(createUrlDto, req.user.userId);
+    return this.urlService.create(createUrlDto, req.user.sub);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get()
   async findAll(@Req() req: Request & { user: User }) {
-    return this.urlService.findAll(req.user.userId);
+    return this.urlService.findAll(req.user.sub);
   }
 
   @Get(':shortUrl')

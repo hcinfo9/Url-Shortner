@@ -9,13 +9,12 @@ export class UrlService {
   async create(createUrlDto: CreateUrlDto, userId: string) {
     return this.prisma.uRL.create({
       data: {
-        ...createUrlDto,
+        originalUrl: createUrlDto.originalUrl,
         shortUrl: nanoid(6),
-        userId,
+        userId: userId,
       },
     });
   }
-
   async findAll(userId: string) {
     return this.prisma.uRL.findMany({
       where: { userId },
@@ -23,9 +22,19 @@ export class UrlService {
   }
 
   async findOne(shortUrl: string) {
-    return this.prisma.uRL.findUnique({
+    const url = await this.prisma.uRL.findUnique({
       where: { shortUrl },
     });
+
+    if (url) {
+      await this.prisma.uRL.update({
+        where: { shortUrl },
+        data: { clicks: url.clicks + 1 },
+      });
+      url.clicks += 1;
+    }
+
+    return url;
   }
 
   async update(id: string, originalUrl: string) {
