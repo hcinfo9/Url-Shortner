@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.11](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.9...v0.0.11) (2024-11-01)
+
 ### [0.0.10](///compare/v0.0.9...v0.0.10) (2024-11-01)
 ### Added
 - Add test unit, update structure vertical, Api Swagger implementation, logs with winston logs, and prom-client monitoring performance
