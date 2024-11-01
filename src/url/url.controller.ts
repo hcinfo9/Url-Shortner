@@ -10,6 +10,7 @@ import {
   UseGuards,
   Req,
   Res,
+  Optional,
 } from '@nestjs/common';
 import { UrlService } from './url.service';
 import { CreateUrlDto } from './dto/create-url.dto';
@@ -21,13 +22,13 @@ import { User } from '../interface/user.interface';
 export class UrlController {
   constructor(private readonly urlService: UrlService) {}
 
-  @UseGuards(JwtAuthGuard)
   @Post()
   async create(
     @Body() createUrlDto: CreateUrlDto,
-    @Req() req: Request & { user: User },
+    @Req() @Optional() req?: Request & { user?: User },
   ) {
-    return this.urlService.create(createUrlDto, req.user.sub);
+    const userId = req?.user?.sub || null;
+    return this.urlService.create(createUrlDto, userId);
   }
 
   @UseGuards(JwtAuthGuard)

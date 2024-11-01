@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid';
 export class UrlService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(createUrlDto: CreateUrlDto, userId: string) {
+  async create(createUrlDto: CreateUrlDto, userId: string | null) {
     return this.prisma.uRL.create({
       data: {
         originalUrl: createUrlDto.originalUrl,

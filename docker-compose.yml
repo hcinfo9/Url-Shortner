@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     build: .
@@ -42,6 +40,15 @@ services:
         reservations:
           cpus: '0.5' 
           memory: 512M 
+
+  krakend:
+    image: devopsfaith/krakend
+    volumes:
+      - ./krakend.json:/etc/krakend/krakend.json
+    ports:
+      - '8080:8080'
+    depends_on:
+      - app
 
 volumes:
   postgresql-persistence:
