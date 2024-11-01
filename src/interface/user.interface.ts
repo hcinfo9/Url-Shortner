@@ -1,6 +1,10 @@
 // user.interface.ts
 export interface User {
+  id: string;
   userId: string;
   email: string;
-  // Add other properties as needed
+  password: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
