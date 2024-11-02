@@ -34,6 +34,9 @@ jobs:
     - run: npm run lint
     - run: npm run test
 
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v1
+
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v1
       with:
