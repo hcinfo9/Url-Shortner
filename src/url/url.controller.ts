@@ -28,13 +28,14 @@ export class UrlController {
     @Req() @Optional() req?: Request & { user?: User },
   ) {
     const userId = req?.user?.sub || null;
-    return this.urlService.create(createUrlDto, userId);
+    const tenantId = req?.user?.tenantId || null;
+    return this.urlService.create(createUrlDto, userId, tenantId);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get()
   async findAll(@Req() req: Request & { user: User }) {
-    return this.urlService.findAll(req.user.sub);
+    return this.urlService.findAll(req.user.sub, req.user.tenantId);
   }
 
   @Get(':shortUrl')

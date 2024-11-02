@@ -6,18 +6,20 @@ import { nanoid } from 'nanoid';
 export class UrlService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(createUrlDto: CreateUrlDto, userId: string | null) {
+  async create(createUrlDto: CreateUrlDto, userId: string, tenantId: string) {
     return this.prisma.uRL.create({
       data: {
         originalUrl: createUrlDto.originalUrl,
         shortUrl: nanoid(6),
         userId: userId,
+        tenantId: tenantId,
       },
     });
   }
-  async findAll(userId: string) {
+
+  async findAll(userId: string, tenantId: string) {
     return this.prisma.uRL.findMany({
-      where: { userId },
+      where: { userId, tenantId },
     });
   }
 

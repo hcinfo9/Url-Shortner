@@ -1,27 +1,14 @@
-provider "google" {
-  credentials = file("${var.credentials_file_path}")
-  project     = var.project_id
-  region      = var.region
+provider "aws" {
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
+  region     = var.region
 }
 
-resource "google_compute_instance" "default" {
-  name         = "vm-instance"
-  machine_type = "f1-micro"
-  zone         = "us-central1-a"
+resource "aws_instance" "example" {
+  ami           = var.ami
+  instance_type = var.instance_type
 
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-9"
-    }
-  }
-
-  network_interface {
-    network = "default"
-    access_config {
-    }
+  tags = {
+    Name = "example-instance"
   }
 }
-
-variable "credentials_file_path" {}
-variable "project_id" {}
-variable "region" {}

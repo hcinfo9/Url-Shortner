@@ -1,4 +1,3 @@
-// src/auth/auth.service.ts
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../prisma/prisma.service';
@@ -36,18 +35,23 @@ export class AuthService {
     if (!user) {
       throw new Error('Invalid credentials');
     }
-    const payload = { email: user.email, sub: user.id };
+    const payload = {
+      email: user.email,
+      sub: user.id,
+      tenantId: user.tenantId,
+    };
     return {
       access_token: this.jwtService.sign(payload),
     };
   }
 
-  async register(createAuthDto: CreateAuthDto) {
+  async register(createAuthDto: CreateAuthDto, tenantId: string) {
     const hashedPassword = await bcrypt.hash(createAuthDto.password, 10);
     const user = await this.prisma.user.create({
       data: {
         email: createAuthDto.email,
         password: hashedPassword,
+        tenantId: tenantId,
       },
     });
     return omit(user, ['password']);

@@ -35,21 +35,6 @@ services:
       - '8080:8080'
     depends_on:
       - app
-   
-  terraform:
-    image: hashicorp/terraform:latest
-    container_name: terraform_container
-    working_dir: /workspace
-    volumes:
-      - ./terraform:/workspace  # Monta o diretório onde o Terraform está configurado
-      - ./credentials.json:/workspace/credentials.json  # Monta o arquivo de credenciais
-    environment:
-      - GOOGLE_PROJECT=${GCP_PROJECT_ID}
-      - GOOGLE_CREDENTIALS=/workspace/credentials.json
-    entrypoint: /bin/sh -c
-    command: >
-      terraform init &&
-      terraform plan -var="credentials_file_path=/workspace/credentials.json" -var="project_id=${GCP_PROJECT_ID}" -var="region=us-central1"
 
 volumes:
   postgresql-persistence:

@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { UrlService } from './url.service';
-import { PrismaServiceMock } from '../prisma/prisma.service.mock';
-import { CreateUrlDto } from './dto/create-url.dto';
+import { UrlService } from '../src/url/url.service';
+import { PrismaServiceMock } from '../src/prisma/prisma.service.mock';
+import { CreateUrlDto } from '../src/url/dto/create-url.dto';
 
 describe('UrlService', () => {
   let service: UrlService;

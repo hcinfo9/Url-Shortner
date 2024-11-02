@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AuthService } from './auth.service';
-import { PrismaServiceMock } from '../prisma/prisma.service.mock';
+import { AuthService } from '../src/auth/auth.service';
+import { PrismaServiceMock } from '../src/prisma/prisma.service.mock';
 import { JwtService } from '@nestjs/jwt';
-import { CreateAuthDto } from './dto/create-auth.dto';
+import { CreateAuthDto } from '../src/auth/dto/create-auth.dto';
 import * as bcrypt from 'bcrypt';
 
 describe('AuthService', () => {
