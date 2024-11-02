@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   app:
     build: .
@@ -13,14 +15,6 @@ services:
       - DATABASE_URL=postgresql://docker123:postgres123@db:5432/databaseurl
     depends_on:
       - db
-    deploy:
-      resources:
-        limits:
-          cpus: '2.0' 
-          memory: 2G  
-        reservations:
-          cpus: '1.0' 
-          memory: 1G  
 
   db:
     image: 'bitnami/postgresql:latest'
@@ -32,14 +26,6 @@ services:
       - '5432:5432'
     volumes:
       - postgresql-persistence:/bitnami/postgresql
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0' 
-          memory: 1G  
-        reservations:
-          cpus: '0.5' 
-          memory: 512M 
 
   krakend:
     image: devopsfaith/krakend
