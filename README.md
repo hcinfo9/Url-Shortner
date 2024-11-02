@@ -145,6 +145,14 @@ Siga as etapas para instalar e executar o projeto localmente:
     
 </br>
 
+  9. Link loadBalancer do deploy na AWS:
+
+      ```bash
+       https://aeb5f49c5f6c24dbca99f59589e1486f-192677946.us-west-2.elb.amazonaws.com/
+      ```
+
+</br>
+
 ## Estrutura do Projeto:
    ```bash
       src/: Contém o código-fonte do projeto.
