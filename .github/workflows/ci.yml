@@ -39,22 +39,22 @@ jobs:
 
     - name: Create credentials file
       run: |
-        echo "${{ secrets.GCP_SA_KEY }}" > ./terraform/credentials.json
-        cat ./terraform/credentials.json # Verifica o conteúdo do arquivo
+        echo "${{ secrets.GCP_SA_KEY }}" > ./credentials.json
+        ls -la # Verifica se o arquivo foi criado corretamente
       shell: bash
 
     - name: Verify credentials file
-      run: ls -la ./terraform && cat ./terraform/credentials.json
+      run: cat ./credentials.json
 
     - name: Terraform Init
       run: terraform init
       working-directory: ./terraform
 
     - name: Terraform Plan
-      run: terraform plan -var="credentials_file_path=./terraform/credentials.json" -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
+      run: terraform plan -var="credentials_file_path=./credentials.json" -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
       working-directory: ./terraform
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-      run: terraform apply -auto-approve -var="credentials_file_path=./terraform/credentials.json" -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
+      run: terraform apply -auto-approve -var="credentials_file_path=./credentials.json" -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
       working-directory: ./terraform
