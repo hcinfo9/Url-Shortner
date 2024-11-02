@@ -57,23 +57,27 @@ Este projeto é uma API de encurtamento de URLs desenvolvida com NestJS. A API p
 Siga as etapas para instalar e executar o projeto localmente:
 
 
+
    1. Clone o repositório:
    
       ```bash
          git clone https://github.com/hcinfo9/Project-Web-Scrapping.git](https://github.com/hcinfo9/Url-Shortner.git
       ```
+
    
    2. Acesse o diretório do projeto:
       
       ```bash
          cd Url-Shortner
       ```
+      
    
    3. Instale as dependências:
        
       ```bash
          npm install
       ```
+      
    
    4. Cria e inicie o container docker rodando a imagem do PostgreSQL, kraked, e Servidor Node com NestJS:
    
@@ -94,6 +98,7 @@ Siga as etapas para instalar e executar o projeto localmente:
        ```bash
          npx prisma migrate deploy
       ```
+       
    
    7. Para realizar os testes unitarios:
    
@@ -101,13 +106,9 @@ Siga as etapas para instalar e executar o projeto localmente:
       npm rum test
       ```
       
-   
-   8. Ambiente docker rodando sem erros
-      Pode executar as rotas em um assistente como PostMan ou Insomnia.
-   
 
-
-   9. Rotas para testar com API Gateway do Kraked
+   
+   8. Rotas para testar com API Gateway do Kraked
        
       ```bash
          http://localhost:8080/api/v1/auth/login
