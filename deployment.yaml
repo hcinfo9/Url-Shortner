@@ -12,9 +12,11 @@ spec:
       labels:
         app: url-shortener
     spec:
+      imagePullSecrets:
+      - name: ecr-secret
       containers:
       - name: app
-        image: your-docker-image
+        image: 242201286458.dkr.ecr.us-west-2.amazonaws.com/url-shortener:latest
         ports:
         - containerPort: 3000
         env:
