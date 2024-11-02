@@ -4,6 +4,9 @@
 
 Este projeto é uma API de encurtamento de URLs desenvolvida com NestJS. A API permite que usuários autenticados e não autenticados criem URLs encurtadas. Usuários autenticados podem gerenciar suas URLs, enquanto usuários não autenticados podem apenas criar URLs encurtadas. A API também inclui autenticação JWT, monitoramento de desempenho com Prometheus, documentação com Swagger, e logs com Winston.
 
+ </br>
+  </br>
+  
 
 ## Tecnologias Utilizadas
 
@@ -19,6 +22,10 @@ Este projeto é uma API de encurtamento de URLs desenvolvida com NestJS. A API p
 - **[Kubernetes](https://kubernetes.io/pt-br/docs/reference/kubectl/)**: Utilizado para criar um cluster e configurar os pods permindo a execução do nosso projeto em um ambiente em nuvem.
 - **[githubAction](https://kubernetes.io/pt-br/docs/reference/kubectl/)**: Executa os testes Unitarios, Lint, Configurações de conexão AWS, e  configuração kubernetes para deploy.
 
+  <br>
+   <br>
+   
+  
 ## Pré-requisitos
 
 - Node.js (versão 22.11.0 ou superior)
@@ -27,13 +34,18 @@ Este projeto é uma API de encurtamento de URLs desenvolvida com NestJS. A API p
 - AWS CLI (para integração com AWS)
 - Kubernetes (Cluster responsavél por conter sua aplicação)
 
+ </br>
+  </br>
 
+  
 ## Funcionalidades
    
    Autenticação de Usuários:
    - Registro: Permite que novos usuários se registrem.
    - Login: Permite que usuários existentes façam login e obtenham um token JWT.
-   
+     
+   </br>
+    
    Encurtamento de URLs:
    - Criação de URLs: Usuários autenticados e não autenticados podem criar URLs encurtadas.
    - Listagem de URLs: Usuários autenticados podem listar todas as suas URLs encurtadas.
@@ -41,14 +53,21 @@ Este projeto é uma API de encurtamento de URLs desenvolvida com NestJS. A API p
    - Atualização de URLs: Usuários autenticados podem atualizar suas URLs encurtadas.
    - Exclusão de URLs: Usuários autenticados podem excluir suas URLs encurtadas.
 
-   
+    
+  </br>
+  
    Monitoramento e Logs:
    - Prometheus: Monitoramento de desempenho.
    - Winston: Logs estruturados.
    - Documentação:
 
+
+  </br>
+  </br>
+   Swagger: Documentação interativa da API pode acessada pela url:http://localhost:3000/api, isso depois de estar com aplicação em execução é claro.
    
-   Swagger: Documentação interativa da API.
+
+      
 
 
 ## Instalação
@@ -57,6 +76,7 @@ Este projeto é uma API de encurtamento de URLs desenvolvida com NestJS. A API p
 Siga as etapas para instalar e executar o projeto localmente:
 
 
+</br>
 
    1. Clone o repositório:
    
@@ -64,6 +84,7 @@ Siga as etapas para instalar e executar o projeto localmente:
          git clone https://github.com/hcinfo9/Project-Web-Scrapping.git](https://github.com/hcinfo9/Url-Shortner.git
       ```
 
+   </br>
    
    2. Acesse o diretório do projeto:
       
@@ -71,6 +92,7 @@ Siga as etapas para instalar e executar o projeto localmente:
          cd Url-Shortner
       ```
       
+   </br>
    
    3. Instale as dependências:
        
@@ -78,6 +100,7 @@ Siga as etapas para instalar e executar o projeto localmente:
          npm install
       ```
       
+   </br>
    
    4. Cria e inicie o container docker rodando a imagem do PostgreSQL, kraked, e Servidor Node com NestJS:
    
@@ -86,12 +109,14 @@ Siga as etapas para instalar e executar o projeto localmente:
              OR
           docker-compose up -d
       ```
+   </br>
    
    5. Execute esse comnado para executar comando que afetam diretametne dentro do noss container:
    
        ```bash
          docker-compose exec app sh
       ```
+   </br>
    
    6. Garantir que a configuração do prisma e suas tabelas estão funcionando: 
    
@@ -99,6 +124,7 @@ Siga as etapas para instalar e executar o projeto localmente:
          npx prisma migrate deploy
       ```
        
+   </br>
    
    7. Para realizar os testes unitarios:
    
@@ -107,6 +133,7 @@ Siga as etapas para instalar e executar o projeto localmente:
       ```
       
 
+   </br>
    
    8. Rotas para testar com API Gateway do Kraked
        
@@ -116,6 +143,7 @@ Siga as etapas para instalar e executar o projeto localmente:
          http://localhost:8080/api/v1/urls
       ```
     
+</br>
 
 ## Estrutura do Projeto:
    ```bash
@@ -134,6 +162,7 @@ Siga as etapas para instalar e executar o projeto localmente:
       k8s: arquivos dpara fazer o deploy na AWS
    ```
 
+</br>
 
 ## Pontos de Melhoria para Escalabilidade Horizontal
 
@@ -141,6 +170,8 @@ Siga as etapas para instalar e executar o projeto localmente:
 - **Cache**: Utilizar cache (por exemplo, Redis) para reduzir a carga no banco de dados.
 - **Desacoplamento de Serviços**: Separar serviços em microsserviços para melhorar a escalabilidade e manutenção.
 - **Monitoramento e Logging**: Implementar ferramentas de monitoramento e logging para identificar gargalos e problemas de performance.
+  
+</br>
 
 ### Desafios
 
