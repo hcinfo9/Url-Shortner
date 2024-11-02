@@ -2,31 +2,59 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.24](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.23...v0.0.24) (2024-11-02)
+
 ### [0.0.23](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.22...v0.0.23) (2024-11-02)
+### Added
+- update ci.yml, update test , ajuust interface and auth guard
 
 ### [0.0.22](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.21...v0.0.22) (2024-11-02)
+### Added
+- update directory tests, update directory deploy kubectl in aws, ajust files terraform, including multi tenant, ci.yml configure final
 
 ### [0.0.21](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.20...v0.0.21) (2024-11-02)
+### Added
+- update workflows CI.wml
 
 ### [0.0.20](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.19...v0.0.20) (2024-11-02)
+### Added
+- Update CI workflow to use master branch and docker compose update e create variables.tf
 
 ### [0.0.19](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.18...v0.0.19) (2024-11-02)
+### Added
+- Update CI workflow to use master branch and docker compose update e create variables.tf
 
 ### [0.0.18](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.17...v0.0.18) (2024-11-02)
+### Added
+- Update CI workflow to use master branch
 
 ### [0.0.17](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.16...v0.0.17) (2024-11-02)
+### Added
+- Update CI workflow to use master branch
 
 ### [0.0.16](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.15...v0.0.16) (2024-11-02)
+### Added
+- Update CI workflow to use master branch and update terraform
 
 ### [0.0.15](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.14...v0.0.15) (2024-11-02)
+### Added
+- Update CI workflow to use master branch
 
 ### [0.0.14](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.13...v0.0.14) (2024-11-02)
+### Added
+- Update CI workflow to use master branch
 
 ### [0.0.13](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.12...v0.0.13) (2024-11-02)
+### Added
+- docker, deployment kubectl  and terraform
 
 ### [0.0.12](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.11...v0.0.12) (2024-11-02)
+### Added
+- Add CI workflow for lint, tests, and Terraform
 
 ### [0.0.11](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.9...v0.0.11) (2024-11-01)
+### Added
+- implement API Gateway KrakeD, ajust in logic url.service and url.controller
 
 ### [0.0.10](///compare/v0.0.9...v0.0.10) (2024-11-01)
 ### Added
