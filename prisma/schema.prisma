@@ -12,7 +12,6 @@ model User {
   id        String   @id @default(uuid())
   email     String   @unique
   password  String
-  tenantId  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   deletedAt DateTime?
@@ -24,8 +23,7 @@ model URL {
   id          String   @id @default(uuid())
   originalUrl String
   shortUrl    String   @unique
-  userId      String?
-  tenantId    String?
+  userId      String
   clicks      Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

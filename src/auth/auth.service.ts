@@ -38,20 +38,26 @@ export class AuthService {
     const payload = {
       email: user.email,
       sub: user.id,
-      tenantId: user.tenantId,
     };
     return {
       access_token: this.jwtService.sign(payload),
     };
   }
 
-  async register(createAuthDto: CreateAuthDto, tenantId: string) {
+  async register(createAuthDto: CreateAuthDto) {
+    const existingUser = await this.prisma.user.findUnique({
+      where: { email: createAuthDto.email },
+    });
+
+    if (existingUser) {
+      throw new Error('Email already exists');
+    }
+
     const hashedPassword = await bcrypt.hash(createAuthDto.password, 10);
     const user = await this.prisma.user.create({
       data: {
         email: createAuthDto.email,
         password: hashedPassword,
-        tenantId: tenantId,
       },
     });
     return omit(user, ['password']);

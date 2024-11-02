@@ -25,6 +25,7 @@ describe('UrlService', () => {
       originalUrl: 'https://example.com',
       shortUrl: 'abc123',
       userId: 'user1',
+      tenantId: 'tenant1',
       clicks: 0,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -42,6 +43,7 @@ describe('UrlService', () => {
         originalUrl: 'https://example.com',
         shortUrl: 'abc123',
         userId: 'user1',
+        tenantId: 'tenant1',
         clicks: 0,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -69,6 +71,7 @@ describe('UrlService', () => {
       originalUrl: 'https://example.com',
       shortUrl: 'abc123',
       userId: 'user1',
+
       clicks: 1,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -95,17 +98,20 @@ describe('UrlService', () => {
   });
 
   it('should delete a URL', async () => {
-    PrismaServiceMock.useValue.uRL.delete.mockReturnValue({
+    PrismaServiceMock.useValue.uRL.update.mockReturnValue({
       id: '1',
       originalUrl: 'https://example.com',
       shortUrl: 'abc123',
       userId: 'user1',
+      tenantId: 'tenant1',
       clicks: 0,
       createdAt: new Date(),
       updatedAt: new Date(),
+      deletedAt: new Date(),
     });
 
     const result = await service.remove('1');
     expect(result.id).toBe('1');
+    expect(result.deletedAt).not.toBeNull();
   });
 });

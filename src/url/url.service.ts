@@ -2,24 +2,25 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUrlDto } from './dto/create-url.dto';
 import { nanoid } from 'nanoid';
+
 @Injectable()
 export class UrlService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(createUrlDto: CreateUrlDto, userId: string, tenantId: string) {
+  async create(createUrlDto: CreateUrlDto, userId: string) {
+    console.log('User ID in service:', userId); // Log para verificar o userId no serviço
     return this.prisma.uRL.create({
       data: {
         originalUrl: createUrlDto.originalUrl,
         shortUrl: nanoid(6),
-        userId: userId,
-        tenantId: tenantId,
+        user: userId ? { connect: { id: userId } } : undefined,
       },
     });
   }
 
-  async findAll(userId: string, tenantId: string) {
+  async findAll(userId: string) {
     return this.prisma.uRL.findMany({
-      where: { userId, tenantId },
+      where: { userId },
     });
   }
 
@@ -47,8 +48,9 @@ export class UrlService {
   }
 
   async remove(id: string) {
-    return this.prisma.uRL.delete({
+    return this.prisma.uRL.update({
       where: { id },
+      data: { deletedAt: new Date() },
     });
   }
 }

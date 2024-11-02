@@ -64,6 +64,10 @@ describe('AuthService', () => {
       email: 'test@example.com',
       password: 'password',
     };
+
+    // Ensure the mock returns null to simulate a non-existing user
+    PrismaServiceMock.useValue.user.findUnique.mockReturnValue(null);
+
     PrismaServiceMock.useValue.user.create.mockReturnValue({
       id: '1',
       email: 'test@example.com',
