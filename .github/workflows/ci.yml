@@ -48,10 +48,10 @@ jobs:
       working-directory: ./terraform
 
     - name: Terraform Plan
-      run: terraform plan
+      run: terraform plan -var="credentials_file_path=${{ secrets.GCP_SA_KEY }}" -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
       working-directory: ./terraform
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-      run: terraform apply -auto-approve
+      run: terraform apply -auto-approve -var="credentials_file_path=${{ secrets.GCP_SA_KEY }}" -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
       working-directory: ./terraform
