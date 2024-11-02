@@ -111,14 +111,14 @@ Siga as etapas para instalar e executar o projeto localmente:
       ```
    </br>
    
-   5. Execute esse comnado para executar comando que afetam diretametne dentro do noss container:
+   5. Execute esse comnano para Acessar o ambiente do container:
    
        ```bash
          docker-compose exec app sh
       ```
    </br>
    
-   6. Garantir que a configuração do prisma e suas tabelas estão funcionando: 
+   6. Gerar as migrations e garantir que a configuração do prisma e suas tabelas estão funcionando: 
    
        ```bash
          npx prisma migrate deploy
