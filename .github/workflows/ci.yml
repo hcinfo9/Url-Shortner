@@ -12,49 +12,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:latest
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_USER: docker123
-          POSTGRES_PASSWORD: postgres123
-          POSTGRES_DB: databaseurl
-
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '22'
-
-    - run: npm install
-    - run: npm run lint
-    - run: npm run test
-
-    - name: Set up Terraform
-      uses: hashicorp/setup-terraform@v1
+    - name: Check out code
+      uses: actions/checkout@v2
 
     - name: Create credentials file
-      run: |
-        echo "${{ secrets.GCP_SA_KEY }}" > ./credentials.json
-        ls -la # Verifica se o arquivo foi criado corretamente
+      run: echo "${{ secrets.GCP_SA_KEY }}" > ./credentials.json
       shell: bash
 
-    - name: Verify credentials file
-      run: cat ./credentials.json
+    - name: Set up Docker Compose
+      run: docker-compose up -d db
 
-    - name: Terraform Init
-      run: terraform init
-      working-directory: ./terraform
+    - name: Install dependencies
+      run: docker-compose run --rm app npm install
 
-    - name: Terraform Plan
-      run: terraform plan -var="credentials_file_path=./credentials.json" -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
-      working-directory: ./terraform
+    - name: Run lint
+      run: docker-compose run --rm app npm run lint
 
-    - name: Terraform Apply
-      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-      run: terraform apply -auto-approve -var="credentials_file_path=./credentials.json" -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
-      working-directory: ./terraform
+    - name: Run tests
+      run: docker-compose run --rm app npm run test
+
+    - name: Tear down Docker Compose
+      if: always()
+      run: docker-compose down -v
