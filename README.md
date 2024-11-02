@@ -105,6 +105,15 @@ Siga as etapas para instalar e executar o projeto localmente:
    8. Ambiente docker rodando sem erros
       Pode executar as rotas em um assistente como PostMan ou Insomnia.
    
+
+
+   9. Rotas para testar com API Gateway do Kraked
+       
+      ```bash
+         http://localhost:8080/api/v1/auth/login
+         
+         http://localhost:8080/api/v1/urls
+      ```
     
 
 ## Estrutura do Projeto:
