@@ -38,13 +38,13 @@ jobs:
       uses: hashicorp/setup-terraform@v1
 
     - name: Create credentials file
-      run: echo "${{ secrets.GCP_SA_KEY }}" > ./terraform/credentials.json
+      run: |
+        echo "${{ secrets.GCP_SA_KEY }}" > ./terraform/credentials.json
+        cat ./terraform/credentials.json # Verifica o conteúdo do arquivo
+      shell: bash
 
-    - name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@v1
-      with:
-        credentials_json: ${{ secrets.GCP_SA_KEY }}
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
+    - name: Verify credentials file
+      run: ls -la ./terraform && cat ./terraform/credentials.json
 
     - name: Terraform Init
       run: terraform init
