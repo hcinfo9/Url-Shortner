@@ -153,6 +153,15 @@ Siga as etapas para instalar e executar o projeto localmente:
 
 </br>
 
+ 10. Criar um Arquivo com as variaveis de ambiente:
+     
+ ````bash
+   - o arquivo de conter a seguinte nomenclatura: .env
+   - e deve conter as variaveis de ambiente que estão no arquivo .env.example.
+ ````
+
+<br>
+
 ## Estrutura do Projeto:
    ```bash
       src/: Contém o código-fonte do projeto.
