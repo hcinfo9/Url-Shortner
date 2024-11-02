@@ -12,26 +12,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:latest
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: docker123
+          POSTGRES_PASSWORD: docker123
+          POSTGRES_DB: databaseurl
+
     steps:
-    - name: Check out code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-    - name: Create credentials file
-      run: echo "${{ secrets.GCP_SA_KEY }}" > ./credentials.json
-      shell: bash
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '22'
 
-    - name: Set up Docker Compose
-      run: docker-compose up -d db
-
-    - name: Install dependencies
-      run: docker-compose run --rm app npm install
-
-    - name: Run lint
-      run: docker-compose run --rm app npm run lint
-
-    - name: Run tests
-      run: docker-compose run --rm app npm run test
-
-    - name: Tear down Docker Compose
-      if: always()
-      run: docker-compose down -v
+    - run: npm install
+    - run: npm run lint
+    - run: npm run test
