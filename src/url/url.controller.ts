@@ -26,7 +26,7 @@ export class UrlController {
     @Body() createUrlDto: CreateUrlDto,
     @Req() @Optional() req?: Request & { user?: User },
   ) {
-    const userId = req.user?.id || null;
+    const userId = req?.user?.id || null;
     return this.urlService.create(createUrlDto, userId);
   }
 
