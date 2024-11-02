@@ -39,7 +39,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ secrets.AWS_REGION}}
+        aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Build Docker image
       run: |
@@ -51,6 +51,9 @@ jobs:
       uses: azure/setup-kubectl@v3
       with:
         version: 'v1.18.0'
+
+    - name: Update kubeconfig
+      run: aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name my-cluster
 
     - name: Deploy to EKS
       run: |
