@@ -63,11 +63,63 @@ Este projeto é uma API de encurtamento de URLs desenvolvida com NestJS. A API p
 
 
   </br>
-  </br>
+ 
    Swagger: Documentação interativa da API pode acessada pela url:http://localhost:3000/api, isso depois de estar com aplicação em execução é claro.
    
+  </br>
+  
+   Endpoints:
+   
+   - Registro de Usuário: POST /auth/register
 
+       ```bash
+           curl -X POST http://a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6-1234567890.us-west-2.elb.amazonaws.com/auth/register -H "Content-Type: application/json" -d '{"email":     
+          "test@example.com", "password": "password123"}'
+       ````
+       
+     
+   - Login de Usuário: POST /auth/login
+
+      ```bash
+         curl -X POST http://a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6-1234567890.us-west-2.elb.amazonaws.com/auth/login -H "Content-Type: application/json" -d '{"email": 
+          "test@example.com", "password": "password123"}'
+      ```   
+
+     
+   - Criar URL Encurtada: POST /urls
+
+      ```bash
+         curl -X POST http://a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6-1234567890.us-west-2.elb.amazonaws.com/urls -H "Content-Type: application/json" -H "Authorization: Bearer 
+         <seu_token_jwt>" -d '{"originalUrl": "https://example.com"}'
+      ```
       
+     
+   - Listar URLs Encurtadas: GET /urls
+
+        ```bash
+          curl -X POST http://a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6-1234567890.us-west-2.elb.amazonaws.com/urls -H "Content-Type: application/json" -H "Authorization: Bearer 
+           seu_token_jwt>" -d '{"originalUrl": "https://example.com"}'
+        ```
+     
+   - Redirecionar para a URL Original: GET /urls/:shortUrl
+
+       ```bash
+         curl -X GET http://a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6-1234567890.us-west-2.elb.amazonaws.com/urls/abc123
+       ```
+       
+   - Atualizar URL Encurtada: PUT /urls/:id
+     
+     ```bash
+       curl -X PUT http://a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6-1234567890.us-west-2.elb.amazonaws.com/urls/<id> -H "Content-Type: application/json" -H "Authorization: Bearer 
+        <seu_token_jwt>" -d '{"originalUrl": "https://newexample.com"}'
+     ```    
+
+   
+   - Excluir URL Encurtada: DELETE /urls/:id
+
+       ```bash
+         curl -X DELETE http://a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6-1234567890.us-west-2.elb.amazonaws.com/urls/<id> -H "Authorization: Bearer <seu_token_jwt>"
+       ```
 
 
 ## Instalação
