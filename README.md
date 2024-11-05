@@ -1,4 +1,5 @@
 # URL Shortener API
+<br>
 
 ## Descrição
 
@@ -63,13 +64,65 @@ Este projeto é uma API de encurtamento de URLs desenvolvida com NestJS. A API p
 
 
   </br>
-  </br>
+ 
    Swagger: Documentação interativa da API pode acessada pela url:http://localhost:3000/api, isso depois de estar com aplicação em execução é claro.
    
+  </br>
+  
+   Endpoints:
+   
+   - Registro de Usuário: POST /auth/register
 
+       ```bash
+           curl -X POST http://localhost:3000/auth/register/auth/ -H "Content-Type: application/json" -d '{"email":     
+          "test@example.com", "password": "password123"}'
+       ````
+       
+     
+   - Login de Usuário: POST /auth/login
+
+      ```bash
+         curl -X POST http://localhost:8080/api/v1/auth/login -H "Content-Type: application/json" -d '{"email": 
+          "test@example.com", "password": "password123"}'
+      ```   
+
+     
+   - Criar URL Encurtada: POST /urls
+
+      ```bash
+         curl -X POST http://localhost:3000/urls -H "Content-Type: application/json" -H "Authorization: Bearer 
+         <seu_token_jwt>" -d '{"originalUrl": "https://example.com"}'
+      ```
       
+     
+   - Listar URLs Encurtadas: GET /urls
 
+        ```bash
+          curl -X POST http://localhost:3000/urls -H "Content-Type: application/json" -H "Authorization: Bearer 
+           seu_token_jwt>" -d '{"originalUrl": "https://example.com"}'
+        ```
+     
+   - Redirecionar para a URL Original: GET /urls/:shortUrl
 
+       ```bash
+         curl -X GET http://localhost:3000/urls/A3aeLJ
+       ```
+       
+   - Atualizar URL Encurtada: PUT /urls/:id
+     
+     ```bash
+       curl -X PUT http://localhost:3000/urls/<id> -H "Content-Type: application/json" -H "Authorization: Bearer 
+        <seu_token_jwt>" -d '{"originalUrl": "https://newexample.com"}'
+     ```    
+
+   
+   - Excluir URL Encurtada: DELETE /urls/:id
+
+       ```bash
+         curl -X DELETE http://localhost:3000/urls/<id> -H "Authorization: Bearer <seu_token_jwt>"
+       ```
+
+<br>
 ## Instalação
 
 
@@ -111,14 +164,14 @@ Siga as etapas para instalar e executar o projeto localmente:
       ```
    </br>
    
-   5. Execute esse comnado para executar comando que afetam diretametne dentro do noss container:
+   5. Execute esse comnano para Acessar o ambiente do container:
    
        ```bash
          docker-compose exec app sh
       ```
    </br>
    
-   6. Garantir que a configuração do prisma e suas tabelas estão funcionando: 
+   6. Gerar as migrations e garantir que a configuração do prisma e suas tabelas estão funcionando: 
    
        ```bash
          npx prisma migrate deploy
@@ -152,6 +205,15 @@ Siga as etapas para instalar e executar o projeto localmente:
       ```
 
 </br>
+
+ 10. Criar um Arquivo com as variaveis de ambiente:
+     
+ ````bash
+   - o arquivo de conter a seguinte nomenclatura: .env
+   - e deve conter as variaveis de ambiente que estão no arquivo .env.example.
+ ````
+
+<br>
 
 ## Estrutura do Projeto:
    ```bash
