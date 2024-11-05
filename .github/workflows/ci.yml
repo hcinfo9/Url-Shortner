@@ -72,5 +72,6 @@ jobs:
     - name: Run Prisma Migrations
       run: |
         kubectl rollout status deployment/url-shortener
-        kubectl exec -it $(kubectl get pod -l app=url-shortener -o jsonpath="{.items[0].metadata.name}") -- npx prisma generate
-        kubectl exec -it $(kubectl get pod -l app=url-shortener -o jsonpath="{.items[0].metadata.name}") -- npx prisma migrate deploy
+        POD_NAME=$(kubectl get pod -l app=url-shortener -o jsonpath="{.items[0].metadata.name}")
+        kubectl exec -it $POD_NAME -- npx prisma generate
+        kubectl exec -it $POD_NAME -- npx prisma migrate deploy
