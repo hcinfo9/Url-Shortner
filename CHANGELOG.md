@@ -3,6 +3,8 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ### [0.0.25](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.24...v0.0.25) (2024-11-05)
+### Added 
+- update Controler and authentication Optional Create url
 
 ### [0.0.24](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.23...v0.0.24) (2024-11-02)
 ### Added
