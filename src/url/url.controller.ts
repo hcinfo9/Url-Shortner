@@ -9,7 +9,6 @@ import {
   UseGuards,
   Req,
   Res,
-  Optional,
 } from '@nestjs/common';
 import { UrlService } from './url.service';
 import { CreateUrlDto } from './dto/create-url.dto';
@@ -26,7 +25,7 @@ export class UrlController {
   @Post()
   async create(
     @Body() createUrlDto: CreateUrlDto,
-    @Req() @Optional() req?: Request & { user?: User },
+    @Req() req: Request & { user: User },
   ) {
     try {
       const result = await this.urlService.create(
