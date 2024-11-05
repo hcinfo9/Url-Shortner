@@ -43,7 +43,7 @@ export class UrlController {
   @UseGuards(JwtAuthGuard)
   @Get()
   async findAll(@Req() req: Request & { user: User }) {
-    return this.urlService.findAll(req.user.id);
+    return this.urlService.findAll(req.user.sub);
   }
 
   @Get(':shortUrl')
