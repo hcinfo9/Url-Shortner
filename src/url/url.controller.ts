@@ -13,7 +13,7 @@ import {
 } from '@nestjs/common';
 import { UrlService } from './url.service';
 import { CreateUrlDto } from './dto/create-url.dto';
-import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
+import { JwtAuthGuard, OptionalAuth } from '../common/guards/jwt-auth.guard';
 import { Request, Response } from 'express';
 import { User } from '../interface/user.interface';
 
@@ -21,13 +21,23 @@ import { User } from '../interface/user.interface';
 export class UrlController {
   constructor(private readonly urlService: UrlService) {}
 
+  @UseGuards(JwtAuthGuard)
+  @OptionalAuth()
   @Post()
   async create(
     @Body() createUrlDto: CreateUrlDto,
     @Req() @Optional() req?: Request & { user?: User },
   ) {
-    const userId = req?.user?.id || null;
-    return this.urlService.create(createUrlDto, userId);
+    try {
+      const result = await this.urlService.create(
+        createUrlDto,
+        req?.user?.sub || null,
+      );
+      return result;
+    } catch (error) {
+      console.error('Error creating URL:', error);
+      throw error;
+    }
   }
 
   @UseGuards(JwtAuthGuard)

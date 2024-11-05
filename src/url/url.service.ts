@@ -8,12 +8,11 @@ export class UrlService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createUrlDto: CreateUrlDto, userId: string) {
-    console.log('User ID in service:', userId); // Log para verificar o userId no serviço
     return this.prisma.uRL.create({
       data: {
         originalUrl: createUrlDto.originalUrl,
         shortUrl: nanoid(6),
-        user: userId ? { connect: { id: userId } } : undefined,
+        userId: userId,
       },
     });
   }
