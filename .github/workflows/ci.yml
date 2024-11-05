@@ -68,10 +68,3 @@ jobs:
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml
         kubectl apply -f k8s/krakend-config.yaml
-
-    - name: Run Prisma Migrations
-      run: |
-        kubectl rollout status deployment/url-shortener
-        POD_NAME=$(kubectl get pod -l app=url-shortener -o jsonpath="{.items[0].metadata.name}")
-        kubectl exec -it $POD_NAME -- npx prisma generate
-        kubectl exec -it $POD_NAME -- npx prisma migrate deploy
