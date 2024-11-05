@@ -122,7 +122,7 @@ Este projeto é uma API de encurtamento de URLs desenvolvida com NestJS. A API p
          curl -X DELETE http://localhost:3000/urls/<id> -H "Authorization: Bearer <seu_token_jwt>"
        ```
 
-
+<br>
 ## Instalação
 
 
