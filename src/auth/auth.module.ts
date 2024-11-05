@@ -12,7 +12,7 @@ import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
     PrismaModule,
     PassportModule,
     JwtModule.register({
-      secret: process.env.JWT_SECRET,
+      secret: process.env.JWT_SECRET || 'your-secret-key',
       signOptions: { expiresIn: '60m' },
     }),
   ],

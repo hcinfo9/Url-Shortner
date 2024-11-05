@@ -56,6 +56,10 @@ jobs:
       run: aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name my-new-cluster
 
     - name: Deploy to EKS
+      env:
+        AWS_REGION: us-west-2
+        JWT_SECRET: ${{ secrets.JWT_SECRET }}
+
       run: |
         kubectl apply -f k8s/postgres-pv.yaml
         kubectl apply -f k8s/postgres-pvc.yaml
