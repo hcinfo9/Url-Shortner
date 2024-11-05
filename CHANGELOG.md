@@ -3,6 +3,8 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ### [0.0.26](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.25...v0.0.26) (2024-11-05)
+## Added
+- update ci.yml, update test , ajuust interface and auth guard
 
 ### [0.0.25](https://github.com/hcinfo9/Url-Shortner/compare/v0.0.24...v0.0.25) (2024-11-05)
 ### Added 
