@@ -134,7 +134,7 @@ Siga as etapas para instalar e executar o projeto localmente:
    1. Clone o repositório:
    
       ```bash
-         git clone https://github.com/hcinfo9/Project-Web-Scrapping.git](https://github.com/hcinfo9/Url-Shortner.git
+         git clone https://github.com/hcinfo9/Project-Web-Scrapping.git
       ```
 
    </br>
@@ -218,17 +218,29 @@ Siga as etapas para instalar e executar o projeto localmente:
 ## Estrutura do Projeto:
    ```bash
       src/: Contém o código-fonte do projeto.
+
       auth/: Módulo de autenticação.
+
       url/: Módulo de encurtamento de URLs.
+
       prisma/: Configuração do Prisma.
+
       common/: Guardas e middlewares comuns.
+
       interface/: Interfaces usadas no projeto.
+
       docker-compose.yml: Configuração do Docker Compose.
+
       Dockerfile: Configuração do Docker.
+
       prisma/: Configurações e migrations do Prisma.
+
       .github/: Workflows do GitHub Actions.
+
       package.json: Dependências e scripts do projeto.
+
       README.md: Documentação do projeto.
+
       k8s: arquivos dpara fazer o deploy na AWS
    ```
 
