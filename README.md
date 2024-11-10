@@ -82,7 +82,7 @@ Este projeto é uma API de encurtamento de URLs desenvolvida com NestJS. A API p
    - Login de Usuário: POST /auth/login
 
       ```bash
-         curl -X POST http://localhost:8080/api/v1/auth/login -H "Content-Type: application/json" -d '{"email": 
+         curl -X POST http://localhost:3000/auth/login -H "Content-Type: application/json" -d '{"email": 
           "test@example.com", "password": "password123"}'
       ```   
 
@@ -134,7 +134,7 @@ Siga as etapas para instalar e executar o projeto localmente:
    1. Clone o repositório:
    
       ```bash
-         git clone https://github.com/hcinfo9/Project-Web-Scrapping.git
+         git clone https://github.com/hcinfo9/Url-Shortner.git
       ```
 
    </br>
